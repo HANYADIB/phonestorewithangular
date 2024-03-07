@@ -1,0 +1,42 @@
+<h1 class="text-center bg-warning text-primary">products </h1>
+
+<hr>
+<div class="container w-50 ">
+<div class="row justify-content-center  ">
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">name</th>
+        <th scope="col">price</th>
+        <th scope="col">catname</th>
+        <th scope="col">subname</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+     
+        @for(pro of productslist;track pro.product_Id){
+            <tr >
+        <td>{{pro.name}}</td>
+        <td>{{pro.price}}</td>
+        <td>{{pro.cat_Name}}</td>
+        <td>{{pro.sup_Name}}</td>
+        <td>
+          <a name="" id="" class="btn btn-success"
+[routerLink]="['/products/' , pro.product_Id]" role="button">Details</a></td>
+        <td>
+          <a name="" id="" class="btn btn-success"
+routerLink="/product/edit/{{pro.product_Id}} " role="button">Edit</a></td>
+        <td>
+          <a name="" id="" class="btn btn-success" role="button" (click)="delete(pro.product_Id)">Delete</a></td>
+        </tr>
+
+        }
+      
+    </tbody>
+  </table>
+  
+</div>
+
+
+</div>

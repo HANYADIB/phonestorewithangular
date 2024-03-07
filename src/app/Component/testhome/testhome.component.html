@@ -1,0 +1,20 @@
+<div class="container">
+    <h2>Create Your Order:</h2>
+    <div class="mb-3 w-75">
+      <label for="prdCat" class="form-label" >Category:</label>
+      <!-- <select #cat class="form-control" name="cat" id="prdCat" (change)="getSelCat(cat.value)"> -->
+      <!-- <select class="form-control" name="cat" id="prdCat" (change)="getSelCat($event)"> //In ts:// event.target.value -->
+      <select class="form-select"  name="cat" id="prdCat" (change)="change($event)"  >
+        <option value=0 selected>All</option>
+        @for( cat of catagorylist;track cat.cat_Id)
+       { <option  [value]="cat.cat_Id">{{cat.namecat}}</option>}
+      </select>
+    </div>
+    <h1>{{chooseCatID}}</h1>
+    <hr>
+    
+    <app-tproductlist></app-tproductlist>
+    
+    </div>
+    
+

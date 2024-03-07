@@ -1,0 +1,41 @@
+<div class="container" w-75>
+    <form #f="ngForm" (ngSubmit)="adduser()">
+        <div class="mb-3">
+            <label for="exampleInputEmail1"  class="form-label">Name</label>
+            <input [(ngModel)]="newUser.name" type="text" name="name" #ga="ngModel" class="form-control" id="exampleInputEmail1" aria-describedby="namelHelp" required>
+            @if(ga.invalid&&ga.touched)
+            {<div id="namelHelp" class="form-text">Name is Required</div>}
+          </div> 
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input [(ngModel)]="newUser.username" type="text" name="username" #gg="ngModel" class="form-control" id="exampleInputEmail1" aria-describedby="userHelp" required>
+            @if(gg.invalid&&gg.touched)
+           { <div id="userHelp" class="form-text">UserName is Required</div>}
+          </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input [(ngModel)]="newUser.email" type="email"  #ggg="ngModel" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required email>
+          @if(ggg.errors?.['required']&&ggg.touched)
+          {<div id="emailHelp" class="form-text">email is Required</div>}
+          @if(ggg.touched && ggg.errors?.['email'])
+          {<div  id="pcHelp" class="form-text">format is Required. </div>}
+    
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input [(ngModel)]="newUser.password" type="password" name="password" #password="ngModel" class="form-control" id="exampleInputPassword" aria-describedby="PasswordHelp" required >
+          @if(password.invalid&&password.touched)
+          {<div  id="PasswordHelp" class="form-text">password is Required.</div>}
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword" class="form-label">passwordComfirm</label>
+          <input [(ngModel)]="newUser.passwordComfirm" type="password" name="passwordComfirm"  #passwordComfirm="ngModel" class="form-control" id="exampleInputPassword" aria-describedby="pcHelp" >
+          @if(passwordComfirm.touched && passwordComfirm.errors?.['required'])
+          {<div id="pcHelp" class="form-text">passwordcomfirm is Required. </div>}
+          @if(passwordComfirm.value!=password.value&&passwordComfirm.touched)
+          {<div  id="pcHelp" class="form-text">passwordcomfirm noyequal password </div>}
+        </div>
+       
+        <button [disabled]="f.invalid || password.value != passwordComfirm.value" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
